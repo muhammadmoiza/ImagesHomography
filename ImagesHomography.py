@@ -28,16 +28,28 @@ def calculate_homography(image, frame):
 
 def main():
 
-    im1 = cv2.imread('Frame.jpg')
-    im2 = cv2.imread('Audrey.jpg')
+    frame_path = input("Enter full path, frame image name along with extension, e.g, C://Pictures/Frame.png :")
+    picture_path = input("Enter full path, picture name along with extension, e.g, C://Pictures/Picture.png :")
+
+    #im1 = cv2.imread('Frame.jpg')
+    #im2 = cv2.imread('Audrey.jpg')
+    im1 = cv2.imread(str(frame_path))
+    im2 = cv2.imread(str(picture_path))
 
     size_x, size_y = len(im2), len(im2[0])
 
+    """
     x1, y1 = 187, 153   # top left
     x2, y2 = 343, 175   # top right
     x3, y3 = 185, 461   # bottom left
     x4, y4 = 343, 432   # bottom right
+    """
     #x5, y5 = (x1 + x3) / 2, (y1 + y3) / 2   # top middle x6, y6 = (x2 + x4) / 2, (y2 + y4) / 2   # bottom middle x7, y7 = (x1 + x2) / 2, (y1 + y2) / 2   # left middle x8, y8 = (x3 + x4) / 2, (y3 + y4) / 2   # right middle
+    print("Now Enter Coordinates for frame")
+    x1, y1 = input("Top left x-coordinate:"), input("Top left y-coordinate:")
+    x2, y2 = input("Top right x-coordinate:"), input("Top right y-coordinate:")
+    x3, y3 = input("Bottom left x-coordinate:"), input("Bottom left y-coordinate:")
+    x4, y4 = input("Bottom right x-coordinate:"), input("Bottom right y-coordinate:")
 
     # x = 508, y = 500 long pic
     x11, y11 = 0, 0  # top left
