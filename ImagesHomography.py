@@ -4,7 +4,6 @@ import time
 import math
 import numpy as np
 import cv2
-from sklearn.preprocessing import normalize
 
 
 def calculate_homography(image, frame):
