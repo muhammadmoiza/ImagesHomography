@@ -1,7 +1,3 @@
-import matplotlib.pyplot as plt
-import matplotlib.image as img
-import time
-import math
 import numpy as np
 import cv2
 
@@ -73,10 +69,10 @@ def main():
             y = int(y/z)
             im1[y][x] = im2[j][i]
 
+    print('Image ready!')
+    cv2.imwrite('Image1.jpg', im1)
     cv2.imshow('image', im1)
     cv2.waitKey(0)
-    cv2.imwrite('Image1.jpg', im1)
-    print('Image ready!')
 
 
 main()
