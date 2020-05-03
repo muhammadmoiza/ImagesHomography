@@ -12,6 +12,7 @@ Homography can map or project a pixel at point A to another point B, correspondi
 ## Example
 Initially two images are taken, one will act as a frame in which the other image will fit into. Four coordinates are taken as input by user as the outline of the frame and then image 2 is fit into image 1 and resultant image is saved in the same directory.
 ### Sample Run Input
+```
 ./SampleImages/MyFrame.jpg
 ./SampleImages/Joker.jpg
 187
@@ -22,6 +23,7 @@ Initially two images are taken, one will act as a frame in which the other image
 461
 343
 432
+```
 
 ### Frame
 ![Image 1 or Frame](SampleImages/MyFrame.jpg)
