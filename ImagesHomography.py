@@ -31,32 +31,35 @@ def main():
     frame_path = input("Enter full path, frame image name along with extension, e.g, C://Pictures/Frame.png :")
     picture_path = input("Enter full path, picture name along with extension, e.g, C://Pictures/Picture.png :")
 
-    #im1 = cv2.imread('Frame.jpg')
-    #im2 = cv2.imread('Audrey.jpg')
-    im1 = cv2.imread(str(frame_path))
-    im2 = cv2.imread(str(picture_path))
+    if not frame_path or not picture_path:
+        print('Images not provided')
+        return
+
+    try:
+        im1, im2 = cv2.imread(str(frame_path)), cv2.imread(str(picture_path))
+    except Exception as e:
+        print('Could not resolve images')
 
     size_x, size_y = len(im2), len(im2[0])
 
-    """
-    x1, y1 = 187, 153   # top left
-    x2, y2 = 343, 175   # top right
-    x3, y3 = 185, 461   # bottom left
-    x4, y4 = 343, 432   # bottom right
-    """
-    #x5, y5 = (x1 + x3) / 2, (y1 + y3) / 2   # top middle x6, y6 = (x2 + x4) / 2, (y2 + y4) / 2   # bottom middle x7, y7 = (x1 + x2) / 2, (y1 + y2) / 2   # left middle x8, y8 = (x3 + x4) / 2, (y3 + y4) / 2   # right middle
-    print("Now Enter Coordinates for frame")
-    x1, y1 = input("Top left x-coordinate:"), input("Top left y-coordinate:")
-    x2, y2 = input("Top right x-coordinate:"), input("Top right y-coordinate:")
-    x3, y3 = input("Bottom left x-coordinate:"), input("Bottom left y-coordinate:")
-    x4, y4 = input("Bottom right x-coordinate:"), input("Bottom right y-coordinate:")
+    print('Now Enter Space-Separated Coordinates for Frame Image with')
+    print('(x1, y1)--------(x2, y2)')
+    print('   |                |')
+    print('   |                |')
+    print('(x3, y3)--------(x4, y4)')
+    print('In the form: x1 y1 x2 y2 x3 y3 x4 y4')
 
-    # x = 508, y = 500 long pic
+    coordinates = input()
+    if len(coordinates.split()) != 8:
+        return
+    x1, y1, x2, y2, x3, y3, x4, y4 = map(int, coordinates.split())
+
+    print('Have patience!')
+
     x11, y11 = 0, 0  # top left
     x12, y12 = size_y, 0  # top right
     x13, y13 = 0, size_x  # bottom left
     x14, y14 = size_y, size_x  # bottom right
-    #x15, y15 = (x11 + x13) / 2, (y11 + y13) / 2   # top middle x16, y16 = (x12 + x14) / 2, (y12 + y14) / 2   # bottom middle x17, y17 = (x11 + x12) / 2, (y11 + y12) / 2   # left middle x18, y18 = (x13 + x14) / 2, (y13 + y14) / 2   # right middle
 
     frame = np.array([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])
     image = np.array([[x11, y11], [x12, y12], [x13, y13], [x14, y14]])
@@ -65,7 +68,6 @@ def main():
     for i in range(size_y):
         for j in range(size_x):
             P = np.matmul(h, np.array([i, j, 1]))
-            #print(P)
             x, y, z = P[0], P[1], P[2]
             x = int(x/z)
             y = int(y/z)
@@ -74,5 +76,7 @@ def main():
     cv2.imshow('image', im1)
     cv2.waitKey(0)
     cv2.imwrite('Image1.jpg', im1)
+    print('Image ready!')
+
 
 main()
