@@ -15,14 +15,14 @@ Initially two images are taken, one will act as a frame in which the other image
 ```
 ./SampleImages/MyFrame.jpg
 ./SampleImages/Joker.jpg
-187
-153
-343
-175
-185
-461
-343
-432
+442
+212
+577
+164
+433
+471
+578
+470
 ```
 
 ### Frame
